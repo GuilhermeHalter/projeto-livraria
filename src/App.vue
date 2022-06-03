@@ -1,11 +1,11 @@
 <template>
 <header>
     <div class="menu-esquerdo">
-      <span>Home</span>
+      <span><RouterLink to="/">Home</RouterLink></span>
       <span>|</span>
-      <span>Jogadores</span>
+      <span><RouterLink to="/Times">Times</RouterLink></span>
       <span>|</span>
-      <span>Times</span>
+      <span><RouterLink to="/jogadores">Jogadores</RouterLink></span>
     </div>
     <div class="menu-direito">
       <span>Sair</span>
@@ -34,6 +34,11 @@ footer {
   justify-content: space-between;
   padding-left: 20px;
 }
+a{
+  color: inherit;
+  text-decoration: none;
+}
+
 header span{
   padding:0 20px;
 }
