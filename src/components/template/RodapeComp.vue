@@ -4,7 +4,7 @@
 <style>
 footer {
   height: 10%;
-  background-color: rgb(68, 224, 47);
+  background-color: rgb(220, 223, 7);
   color: white;
   font-size: 1.3rem;
   display: flex;

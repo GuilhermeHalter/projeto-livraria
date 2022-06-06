@@ -5,7 +5,9 @@ import RodapeComp from "@/components/template/RodapeComp.vue";
 
 <template>
   <HeaderComp />
-  <RouterView />
+  <main>
+    <RouterView />
+  </main>
   <RodapeComp />
 </template>
 
