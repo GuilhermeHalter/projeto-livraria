@@ -1,15 +1,39 @@
+<script>
+import { v4 as uuidv4 } from "uuid";
+export default {
+  data() {
+    return {
+      jogadores: [
+        { id: 1, nome: "jogador 1" },
+        { id: 2, nome: "jogador 2" },
+        { id: 3, nome: "jogador 3" },
+      ],
+      novo_jogador: "" ,
+      novo_time: ""
+    };
+  },
+  methods: {
+    salvar(){
+      const novo_id = uuidv4();
+      this.times.push({
+        id: novo_id,
+        nome: this.novo_jogador,
+        nome2: this.novo_time
+      })
+    },
+  },
+};
+</script>
+
 <template>
   <div class="container">
     <div class="title">
       <h2>Gerenciamento de jogadores</h2>
     </div>
     <div class="form-inputs">
-    <input type="text" placeholder="Nome jogador"/>
-    <button>Salvar</button>
-    </div>
-    <div class="form-inputs">
-    <input type="text" placeholder="Nome do time"/>
-    <button>Salvar</button>
+      <input type="text" placeholder="Nome jogador"  v-model="novo_jogador" />
+      <input type="text" placeholder="Nome do time"  v-model="novo_time"/>
+      <button @click="salvar">Salvar</button>
     </div>
     <div class="list-iten">
       <table>
@@ -21,24 +45,16 @@
             <th>ID Time</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>nome 1</td>
+       <tbody>
+          <tr v-for="jogador in jogadores" :key="jogador.id">
+            <td>
+              {{ jogador.id }}
+            </td>
+            <td>
+              {{ jogador.nome }}
+            </td>
+            <td>????</td>
             <td></td>
-            <td>???</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>nome 2</td>
-            <td></td>
-            <td>???</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>nome 3</td>
-            <td></td>
-            <td>???</td>
           </tr>
         </tbody>
       </table>
@@ -46,23 +62,29 @@
   </div>
 </template>
 <style>
-.title{
+.title {
   text-align: center;
   margin: 2rem 0;
 }
 
-.form-inputs{
+h2{
+  color: black;
+}
+
+.form-inputs {
   display: flex;
   justify-content: center;
   margin: 2rem 0;
 }
-.form-inputs input{
-  width: 50%;
+
+.form-inputs input {
+  width: 30%;
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 10px;
 }
-.form-inputs button{
+
+.form-inputs button {
   padding: 0.5rem;
   width: 20%;
   border: 1px solid rgb(51, 75, 102);
@@ -72,32 +94,34 @@
   font-weight: bold;
   margin-left: 1%;
 }
-.list-iten{
+
+.list-iten {
   display: flex;
   justify-content: center;
 }
-table{
+
+table {
   width: 50%;
   border-collapse: collapse;
   margin: 0 auto;
   border: 1px solid black;
   font-size: 1.1rem;
 }
-table thead{
+
+table thead {
   background-color: rgb(216, 34, 34);
   color: white;
-  
 }
 
-table thead th{
+table thead th {
   font-weight: bolder;
-  }
+}
 
-table tbody tr{
+table tbody tr {
   text-align: center;
 }
 
-table tbody tr:nth-child(odd){
+table tbody tr:nth-child(odd) {
   background-color: rgb(243, 177, 177);
 }
 </style>
