@@ -4,9 +4,9 @@ export default {
   data() {
     return {
       jogadores: [
-        { id: 1, nome: "jogador 1" },
-        { id: 2, nome: "jogador 2" },
-        { id: 3, nome: "jogador 3" },
+        { id: "91dcc0ed-b6bb-4979-ab4b-5747ce552e41", nome: "jogador 1", time:"time 1" },
+        { id: "7a3deb3c-2367-463d-a380-ac57a163c9cd", nome: "jogador 2", time:"time 2" },
+        { id: "4b7d86bc-f5d1-44b3-a476-da3e9ce2d49e", nome: "jogador 3", time:"time 3"},
       ],
       novo_jogador: "" ,
       novo_time: ""
@@ -14,13 +14,21 @@ export default {
   },
   methods: {
     salvar(){
+       if ((this.novo_jogador !== "") && (this.novo_time !== "")){
       const novo_id = uuidv4();
-      this.times.push({
+      this.jogadores.push({
         id: novo_id,
         nome: this.novo_jogador,
-        nome2: this.novo_time
-      })
+        time: this.novo_time
+      });
+      this.novo_time = "", 
+      this.novo_jogador = ""
+     }
     },
+    excluir(jogadores){
+      const indice = this.jogadores.indexOf(jogadores);
+      this.jogadores.splice(indice, 1);
+    }
   },
 };
 </script>
@@ -31,8 +39,8 @@ export default {
       <h2>Gerenciamento de jogadores</h2>
     </div>
     <div class="form-inputs">
-      <input type="text" placeholder="Nome jogador"  v-model="novo_jogador" />
-      <input type="text" placeholder="Nome do time"  v-model="novo_time"/>
+      <input type="text" placeholder="Nome jogador"  v-model="novo_jogador" @keydown.enter="salvar" />
+      <input type="text" placeholder="Nome do time"  v-model="novo_time" @keydown.enter="salvar"/>
       <button @click="salvar">Salvar</button>
     </div>
     <div class="list-iten">
@@ -53,8 +61,11 @@ export default {
             <td>
               {{ jogador.nome }}
             </td>
-            <td>????</td>
-            <td></td>
+            <td>{{jogador.time}}</td>
+            <td>
+              <button>Editar</button>
+              <button @click="excluir(jogadores)">Excluir</button>
+            </td>
           </tr>
         </tbody>
       </table>
