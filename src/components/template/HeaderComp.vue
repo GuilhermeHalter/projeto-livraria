@@ -21,7 +21,7 @@
 <style>
 header {
   height: 10%;
-  background-image: linear-gradient(to right, rgb(185, 107, 4) , rgb(221, 238, 70));
+  background-image: linear-gradient(to right, rgb(189, 115, 18) , rgb(221, 238, 70));
   color: white;
   font-size: 1.3rem;
   display: flex;
