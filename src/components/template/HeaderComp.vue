@@ -1,13 +1,18 @@
 <template>
   <header>
     <div class="menu-esquerdo">
-      <span><RouterLink to="/">Home</RouterLink></span>
+      <span> <RouterLink to="/">Home</RouterLink> </span>
       <span>|</span>
-      <span><RouterLink to="/Times">Times</RouterLink></span>
+      <span> <RouterLink to="/editoras">Editoras</RouterLink> </span>
       <span>|</span>
-      <span><RouterLink to="/jogadores">Jogadores</RouterLink></span>
+      <span> <RouterLink to="/livros">Livros</RouterLink> </span>
+      <span>|</span>
+      <span> <RouterLink to="/cartegorias">Cartegorias</RouterLink> </span>
+      <span>|</span>
+      <span> <RouterLink to="/autores">Autores</RouterLink> </span>
     </div>
     <div class="menu-direito">
+      <span> {{ usuario }} </span>
       <span>Sair</span>
     </div>
   </header>
@@ -16,7 +21,7 @@
 <style>
 header {
   height: 10%;
-  background-color: rgb(84, 19, 235);
+  background-image: linear-gradient(to right, rgb(185, 107, 4) , rgb(221, 238, 70));
   color: white;
   font-size: 1.3rem;
   display: flex;
